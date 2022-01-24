@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Favorite Games</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./index.css">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <form>
+            <label for='title'>Game Title:</label>
+            <input type='text' id='title' name='title'><br>
+            <label for='imageURL'>ImageURL:</label>
+            <input type='text' id='imageURL' name='imageURL'><br>
+            <label for='description1'>Description:</label>
+            <textarea name="description1" id="description1" cols="30" rows="3"></textarea><br>
+            <label for='videoURL'>Video Link:</label>
+            <input type='text' id='videoURL' name='videoURL'><br>
+            <button id='post'>Post it</button>
+        </form>
+        <br>
+        <button id='get'>Get it</button>
+        <div id='test'>Hello</div>
+
+        
+        <script src="./index.js" async defer></script>
+    </body>
+</html>
