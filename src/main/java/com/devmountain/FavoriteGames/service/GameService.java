@@ -41,4 +41,6 @@ public class GameService {
     public void deleteGame(Long id){
         gameRepository.deleteById(id);
     }
+
+    //public Game addUserName(String userName){ return gameRepository.save(userName)}
 }

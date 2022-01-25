@@ -2,6 +2,7 @@ package com.devmountain.FavoriteGames.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Player implements Serializable {
@@ -13,6 +14,10 @@ public class Player implements Serializable {
     private String userName;
     private String email;
     private String password;
+
+
+    @OneToMany()
+    private List<Game> game;
 
     public Player() {
     }

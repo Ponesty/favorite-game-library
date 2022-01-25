@@ -16,6 +16,10 @@ public class Game implements Serializable {
     private String videoURL;
 
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Player player;
+
+
     public Game() {
     }
 
@@ -65,6 +69,14 @@ public class Game implements Serializable {
     public void setVideoURL(String videoURL) {
         this.videoURL = videoURL;
     }
+
+//    public Player getPlayer() {
+//        return player;
+//    }
+//
+//    public void setPlayer(Player player) {
+//        this.player = player;
+//    }
 
     @Override
     public String toString() {
