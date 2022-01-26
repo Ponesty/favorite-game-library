@@ -32,6 +32,13 @@ public class GameController {
         return new ResponseEntity<>(game, HttpStatus.OK);
     }
 
+    //finding all games with specific playerId
+    @GetMapping("/player/{id}")
+    public ResponseEntity<List<Game>> findAllGamesByPlayerId(@PathVariable("id") Long id){
+        List<Game> games = gameService.findAllGamesByPlayerId(id);
+        return new ResponseEntity<>(games, HttpStatus.OK);
+    }
+
     @CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("/add")
     public ResponseEntity<Game> addGame(@RequestBody Game game){

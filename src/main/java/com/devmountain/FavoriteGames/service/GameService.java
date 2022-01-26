@@ -37,6 +37,9 @@ public class GameService {
         return gameRepository.findGameById(id);
     }
 
+    //finding games with specific playerId
+    public List<Game> findAllGamesByPlayerId(Long id) {return gameRepository.findAllGamesByPlayerId(id);}
+
     //deleting game in table.
     public void deleteGame(Long id){
         gameRepository.deleteById(id);

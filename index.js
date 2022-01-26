@@ -1,10 +1,10 @@
 //const { default: axios } = require("axios");
 
 
-show1 = document.querySelector('#test');
+//show1 = document.querySelector('#test');
 
 document.querySelector('#get').onclick = () => {
-    axios.get(`http://localhost:8082/game/all`).then(function (response){
+    axios.get(`http://localhost:8082/game/player/${playerId}`).then(function (response){
         let show2 =document.createElement('div');
         let game = response.data[0];
         //show2.append(game.description);
@@ -27,7 +27,8 @@ document.querySelector('#post').onclick = () => {
         "title": qTitle.value,
         "imageURL": qImage.value,
         "description": qDescription.value,
-        "videoURL": qVideo.value
+        "videoURL": qVideo.value,
+        "player": playerId
     }).then(function (response) {
         qTitle.value ="";
         qImage.value="";
