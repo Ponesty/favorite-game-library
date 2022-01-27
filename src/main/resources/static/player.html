@@ -10,13 +10,32 @@
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     </head>
     <body>
-        <form>
-            <label for='userName'>UserName:</label>
-            <input type='text' id='userName' name='userName'><br>
-            <label for='password'>Password:</label>
-            <input type='text' id='password' name='password'><br>
-            <button id='login'>Login</button>
-        </form>
+        <div class='flex-container'>
+            <div id='loginBox'>
+                <form>
+                    <label for='userName'>UserName:</label>
+                    <input type='text' id='userName' name='userName'><br>
+                    <label for='password'>Password:</label>
+                    <input type='text' id='password' name='password'><br>
+                    <button id='login'>Login</button>
+                </form>
+
+            </div>
+    
+            <div id='signUpBox'>
+                <form>
+                    <label for='newUserName'>Enter User Name:</label>
+                    <input type='text' id='newUserName' name='newUserName'><br>
+                    <label for='email'>Enter Email Address:</label>
+                    <input type='text' id='email' name='email'><br>
+                    <label for='newPassword'>Enter Password:</label>
+                    <input type='text' id='newPassword' name='newPassword'><br>
+                    <button>Sign Up</button>
+                </form>
+
+            </div>
+
+        </div>
         
         <script src="./player.js" async defer></script>
         <script src="./index.js" async defer></script>
