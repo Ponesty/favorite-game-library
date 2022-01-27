@@ -2,6 +2,7 @@ package com.devmountain.FavoriteGames.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,8 +17,8 @@ public class Player implements Serializable {
     private String password;
 
 
-    @OneToMany()
-    private List<Game> game;
+    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Game> games = new ArrayList<>();
 
     public Player() {
     }
@@ -34,5 +35,9 @@ public class Player implements Serializable {
 
     public String getUserName() {
         return userName;
+    }
+
+    public void setGame(Game game) {
+        this.games.add(game);
     }
 }

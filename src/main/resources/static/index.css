@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+}
+
+.flex-container {
+    display: flex;
+    
+
+}
+
+#box1 {
+    background-color: blue;
+    padding: 10px;
+    border: 5px solid black;
+    
+}
+
+#box2 {
+    background-color: red;
+    padding: 10px;
+}

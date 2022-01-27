@@ -1,25 +1,34 @@
 package com.devmountain.FavoriteGames.service;
 
 import com.devmountain.FavoriteGames.Repository.GameRepository;
+import com.devmountain.FavoriteGames.Repository.PlayerRepository;
 import com.devmountain.FavoriteGames.model.Game;
+import com.devmountain.FavoriteGames.model.GameDto;
+import com.devmountain.FavoriteGames.model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class GameService {
     private final GameRepository gameRepository;
+    private final PlayerRepository playerRepository;
 
     @Autowired
-    public GameService(GameRepository gameRepository) {
+    public GameService(GameRepository gameRepository, PlayerRepository playerRepository) {
         this.gameRepository = gameRepository;
+        this.playerRepository = playerRepository;
     }
 
+
+
     //Posting new game to table
-    public Game addGame(Game game){
-        return gameRepository.save(game);
+    public Game addGame(GameDto gameDto, Long id){
+        Player player = playerRepository.findPlayerById(id);
+        gameDto.setPlayer(player);
+        Game game = new Game(gameDto);
+        return gameRepository.saveAndFlush(game);
     }
 
     //getting all games in the table.

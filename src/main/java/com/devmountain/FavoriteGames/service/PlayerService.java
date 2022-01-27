@@ -21,6 +21,8 @@ public class PlayerService {
         return playerRepository.save(player);
     }
 
+    public Player updatePlayer(Player player){ return playerRepository.save(player);}
+
     public List<Player> findAllPlayers(){ return playerRepository.findAll();}
 
     public Player findPlayerById(Long id){

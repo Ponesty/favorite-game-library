@@ -39,4 +39,10 @@ public class PlayerController {
         return new ResponseEntity<>(newPlayer, HttpStatus.CREATED);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Player> updatePlayer(@RequestBody Player player){
+        Player updatePlayer = playerService.updatePlayer(player);
+        return new ResponseEntity<>(updatePlayer, HttpStatus.OK);
+    }
+
 }

@@ -1,6 +1,8 @@
 package com.devmountain.FavoriteGames;
 
 import com.devmountain.FavoriteGames.model.Game;
+import com.devmountain.FavoriteGames.model.GameDto;
+import com.devmountain.FavoriteGames.model.Player;
 import com.devmountain.FavoriteGames.service.GameService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +35,7 @@ public class GameController {
     }
 
     //finding all games with specific playerId
+    @CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/player/{id}")
     public ResponseEntity<List<Game>> findAllGamesByPlayerId(@PathVariable("id") Long id){
         List<Game> games = gameService.findAllGamesByPlayerId(id);
@@ -40,10 +43,10 @@ public class GameController {
     }
 
     @CrossOrigin(origins = "http://127.0.0.1:5500")
-    @PostMapping("/add")
-    public ResponseEntity<Game> addGame(@RequestBody Game game){
-        Game newGame = gameService.addGame(game);
-        return new ResponseEntity<>(newGame, HttpStatus.CREATED);
+    @PostMapping("/{id}/add")
+    public ResponseEntity<GameDto> addGame(@RequestBody GameDto gameDto, @PathVariable("id") Long id){
+        gameService.addGame(gameDto, id);
+        return new ResponseEntity<>(gameDto, HttpStatus.CREATED);
     }
 
     @PutMapping("/update")

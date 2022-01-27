@@ -1,14 +1,10 @@
 package com.devmountain.FavoriteGames.model;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
-@Entity
-public class Game implements Serializable {
+public class GameDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, updatable = false)
+
     private Long id;
     private String title;
     private String imageURL;
@@ -16,23 +12,22 @@ public class Game implements Serializable {
     private String videoURL;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "player_id")
+
     private Player player;
 
-    public Game(GameDto gameDto){
-        this.title = gameDto.getTitle();
-        this.imageURL = gameDto.getImageURL();
-        this.description = gameDto.getDescription();
-        this.videoURL = gameDto.getVideoURL();
-        this.player = gameDto.getPlayer();
+    public GameDto(String title, String imageURL, String description, String videoURL, Player player) {
+        this.title = title;
+        this.imageURL = imageURL;
+        this.description = description;
+        this.videoURL = videoURL;
+        this.player = player;
     }
 
-
-    public Game() {
+    public GameDto() {
     }
 
-    public Game(String title, String imageURL, String description, String videoURL, Player player) {
+    public GameDto(Long id, String title, String imageURL, String description, String videoURL, Player player) {
+        this.id = id;
         this.title = title;
         this.imageURL = imageURL;
         this.description = description;
@@ -68,7 +63,7 @@ public class Game implements Serializable {
         return description;
     }
 
-    public void setDesc(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -80,15 +75,11 @@ public class Game implements Serializable {
         this.videoURL = videoURL;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", imageURL='" + imageURL + '\'' +
-                ", description='" + description + '\'' +
-                ", videoURL='" + videoURL + '\'' +
-                '}';
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }
