@@ -18,21 +18,21 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    //@CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/all")
     public ResponseEntity<List<Player>> getAllPlayers() {
         List<Player> players = playerService.findAllPlayers();
         return new ResponseEntity<>(players, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    //@CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/find/{userName}")
     public ResponseEntity<Player> getPlayerByName(@PathVariable("userName") String userName) {
         Player player = playerService.findPlayerByUserName(userName);
         return new ResponseEntity<>(player, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    //@CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("/add")
     public ResponseEntity<Player> addPlayer(@RequestBody Player player){
         Player newPlayer = playerService.addPlayer(player);

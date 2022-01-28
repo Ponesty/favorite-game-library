@@ -35,14 +35,14 @@ public class GameController {
     }
 
     //finding all games with specific playerId
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    //@CrossOrigin(origins = "http://127.0.0.1:5500")
     @GetMapping("/player/{id}")
     public ResponseEntity<List<Game>> findAllGamesByPlayerId(@PathVariable("id") Long id){
         List<Game> games = gameService.findAllGamesByPlayerId(id);
         return new ResponseEntity<>(games, HttpStatus.OK);
     }
 
-    @CrossOrigin(origins = "http://127.0.0.1:5500")
+    //@CrossOrigin(origins = "http://127.0.0.1:5500")
     @PostMapping("/{id}/add")
     public ResponseEntity<GameDto> addGame(@RequestBody GameDto gameDto, @PathVariable("id") Long id){
         gameService.addGame(gameDto, id);
