@@ -33,13 +33,13 @@ const displayGames = (game) => {
 }
 
 
-// axios.get(`http://localhost:8082/player/find/${player2}`).then(function (response){
-//     playerObject = response.data;
-//     console.log(playerObject);
-// });
+axios.get(`http://localhost:8082/player/find/${player2}`).then(function (response){
+    playerObject = response.data;
+    console.log(playerObject);
+});
 
 document.querySelector('#get').onclick = () => {//playerObject.id in place of 1
-    axios.get(`http://localhost:8082/game/player/1`).then(function (response){
+    axios.get(`http://localhost:8082/game/player/${playerObject.id}`).then(function (response){
         //let show2 =document.createElement('div');
         game = response.data;
         console.log(game);
@@ -56,7 +56,7 @@ qDescription = document.querySelector('#description1');
 qVideo = document.querySelector('#videoURL');
 
 document.querySelector('#post').onclick = () => {//playerObject.id in place of 1
-    axios.post(`http://localhost:8082/game/1/add`,
+    axios.post(`http://localhost:8082/game/${playerObject.id}/add`,
     {
         "title": qTitle.value,
         "imageURL": qImage.value,
