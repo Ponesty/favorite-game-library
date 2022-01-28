@@ -7,9 +7,9 @@ const mainPage = () => {
     // window.location.assign("http://localhost:8082/index.html");
 }
 
-document.querySelector('#login').onclick = () => {
+document.querySelector('#login').onclick = (e) => {
+    e.preventDefault();
     axios.get(`http://localhost:8082/player/find/${uName.value}`).then(function (response){
-        console.log("made it 1!");
         let player = response.data.userName;
         document.cookie = `${player}`;
         mainPage();
