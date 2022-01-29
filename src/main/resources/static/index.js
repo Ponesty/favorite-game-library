@@ -3,9 +3,16 @@
 //let elements = document.cookie.split('=');
 console.log(document.cookie);
 const gameContainer = document.querySelector('#game-container');
+//The Players username;
 let player2 = document.cookie;
 var playerObject;
 let game;
+
+const deleteGame = (id) => {
+    axios.delete(`http://localhost:8082/game/delete/${id}`).then(res =>{
+        window.location.reload();
+    });
+}
 
 function createGameCard(game){
     const gameCard = document.createElement('div');
@@ -17,6 +24,7 @@ function createGameCard(game){
     <iframe width="420" height="315"
     src=${game.videoURL}>
     </iframe>
+    <button id= 'deleteBtn' onclick='deleteGame(${game.id})'>Remove Game</button>
     `
 
     gameContainer.appendChild(gameCard);

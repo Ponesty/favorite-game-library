@@ -17,7 +17,7 @@ public class Player implements Serializable {
     private String password;
 
 
-    @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "player")
     private List<Game> games = new ArrayList<>();
 
     public Player() {

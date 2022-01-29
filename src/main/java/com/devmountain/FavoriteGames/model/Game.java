@@ -16,7 +16,7 @@ public class Game implements Serializable {
     private String videoURL;
 
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     @JoinColumn(name = "player_id")
     private Player player;
 
