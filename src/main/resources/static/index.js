@@ -89,6 +89,7 @@ document.querySelector('#search').onclick = (e) => {
     window.location.href=`http://localhost:8082/view.html`;
 }
 
+
 //Sign out button. Removing all cookies
 document.querySelector('#signOut').onclick = (e) => {
     e.preventDefault();
