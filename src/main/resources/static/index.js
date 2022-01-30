@@ -75,8 +75,11 @@ document.querySelector('#post').onclick = () => {//playerObject.id in place of 1
         qImage.value="";
         qDescription.value ="";
         qVideo.value ="";
-    });
+    });   
+}
 
-
-
+document.querySelector('#search').onclick = (e) => {
+    e.preventDefault();
+    document.cookie = `playerView=` + document.querySelector('#searchBox').value;
+    window.location.href=`http://localhost:8082/view.html`;
 }
