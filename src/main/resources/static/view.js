@@ -2,6 +2,8 @@
 let pCookie = document.cookie;
 
 console.log(pCookie);
+
+//Function that gets the player name we want from the correct cookie.
 function getCookie(cname) {
     let name = cname + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
@@ -21,8 +23,8 @@ function getCookie(cname) {
 
 
 
-//code starts
-//let playerId;
+
+//Getting the player from the server by passing the username. Then passing the player id to the getGames function.
 function getPlayer(playerName){
     axios.get(`http://localhost:8082/player/find/${playerName}`).then(function (response){
         console.log('player is is' + response.data.id);
@@ -30,13 +32,14 @@ function getPlayer(playerName){
     });
 }
 
-//getPlayer(getCookie('playerView'));
 
 
 
-
+//container in html where games will be displayed.
 let gameContainer = document.querySelector('#game-container');
 
+
+//each individual game is getting it's own card that can display their information on screen.
 function createGameCard(game){
     const gameCard = document.createElement('div');
     gameCard.classList.add('game-card');
@@ -53,7 +56,7 @@ function createGameCard(game){
 }
 
 
-
+//Taken the games array from player id and creating a box for each game by passing them into the createGameCard function.
 const displayGames = (game) => {
     gameContainer.innerHTML = ``;
     for(let i =0; i< game.length; i++){
@@ -62,6 +65,7 @@ const displayGames = (game) => {
     }
 }
 
+//Getting the games that are connected to the player id. Then passing the games to display games function.
 const getGames = (id) => {
     axios.get(`http://localhost:8082/game/player/${id}`).then(function (response){
         game = response.data;
@@ -70,6 +74,7 @@ const getGames = (id) => {
     });
 }
 
+//Taking the players name and refreshing player.html so we can see the new players games.
 document.querySelector('#search').onclick = (e) => {
     e.preventDefault();
     document.cookie = `playerView=` + document.querySelector('#searchBox').value;
@@ -78,6 +83,13 @@ document.querySelector('#search').onclick = (e) => {
 }
 
 
-//getGames(playerId);
+//Sign out button. Removing all cookies
+document.querySelector('#signOut').onclick = (e) => {
+    e.preventDefault();
+    //document.cookie ='expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    window.location.replace(`http://localhost:8082/player.html`);
+}
 
+
+//Getting player by id by passing the player name from cookie and displaying players games.
 getPlayer(getCookie('playerView'));

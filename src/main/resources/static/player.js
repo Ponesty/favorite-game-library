@@ -38,5 +38,4 @@ document.querySelector('#signUp').onclick = (e) => {
     });
 }
 
-//console.log(newUname.value);
-document.querySelector('#replace').onclick = () => mainPage();
+

@@ -1,19 +1,21 @@
 //const { default: axios } = require("axios");
 
-//let elements = document.cookie.split('=');
+
 console.log(document.cookie);
 const gameContainer = document.querySelector('#game-container');
-//The Players username;
+//The Players username in the cookie. Player username is in player2.
 let player2 = document.cookie;
 var playerObject;
 let game;
 
+//Function sending a delete game request to server.
 const deleteGame = (id) => {
     axios.delete(`http://localhost:8082/game/delete/${id}`).then(res =>{
         window.location.reload();
     });
 }
 
+//Creating the game card for each game sent in.
 function createGameCard(game){
     const gameCard = document.createElement('div');
     gameCard.classList.add('game-card');
@@ -31,7 +33,7 @@ function createGameCard(game){
 }
 
 
-
+//Taking each game and sending them to the createGameCard function to be organized and displayed.
 const displayGames = (game) => {
     gameContainer.innerHTML = ``;
     for(let i =0; i< game.length; i++){
@@ -40,13 +42,14 @@ const displayGames = (game) => {
     }
 }
 
-
+//Finding the logged in player from database so we can use the player id to get their games and saved their created games.
 axios.get(`http://localhost:8082/player/find/${player2}`).then(function (response){
     playerObject = response.data;
     console.log(playerObject);
 });
 
-document.querySelector('#get').onclick = () => {//playerObject.id in place of 1
+//Getting games from the logged in players game list. Currently using the get button.
+document.querySelector('#get').onclick = () => {
     axios.get(`http://localhost:8082/game/player/${playerObject.id}`).then(function (response){
         //let show2 =document.createElement('div');
         game = response.data;
@@ -63,7 +66,8 @@ qImage = document.querySelector('#imageURL');
 qDescription = document.querySelector('#description1');
 qVideo = document.querySelector('#videoURL');
 
-document.querySelector('#post').onclick = () => {//playerObject.id in place of 1
+//Adding game to the logged in player game list.
+document.querySelector('#post').onclick = () => {
     axios.post(`http://localhost:8082/game/${playerObject.id}/add`,
     {
         "title": qTitle.value,
@@ -78,8 +82,16 @@ document.querySelector('#post').onclick = () => {//playerObject.id in place of 1
     });   
 }
 
+//Taking player name in search bar and connecting it to a cookie. Then we go to view.html so we can see the player games.
 document.querySelector('#search').onclick = (e) => {
     e.preventDefault();
     document.cookie = `playerView=` + document.querySelector('#searchBox').value;
     window.location.href=`http://localhost:8082/view.html`;
+}
+
+//Sign out button. Removing all cookies
+document.querySelector('#signOut').onclick = (e) => {
+    e.preventDefault();
+    //document.cookie ='expires=Thu, 01 Jan 1970 00:00:00 UTC';
+    window.location.replace(`http://localhost:8082/player.html`);
 }
