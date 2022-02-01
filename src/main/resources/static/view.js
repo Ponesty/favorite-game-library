@@ -47,7 +47,7 @@ function createGameCard(game){
     gameCard.innerHTML =`<h3 class="title">${game.title}</h3>
     <img alt='Game image' src=${game.imageURL} class="game-image"/>
     <p class="game-description">${game.description}</p>
-    <iframe width="420" height="315"
+    <iframe
     src=${game.videoURL}>
     </iframe>
     `
