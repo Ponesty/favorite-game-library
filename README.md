@@ -1,4 +1,4 @@
-# Favorite Game Lirary
+# Favorite Game Library
 An application that will allow users to create a library of their favorite games. The user will be able to customize their own games details and view other users favorite games.
 
 ## MVP
