@@ -11,4 +11,4 @@ An application that will allow users to create a library of their favorite games
 ## Database
 - User accounts<br />
 - Users Favorite Games<br />
-- Game Genres<br />
+
