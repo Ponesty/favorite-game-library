@@ -1,4 +1,4 @@
-# Favorite Game Lirary
+# Favorite Game Library
 An application that will allow users to create a library of their favorite games. The user will be able to customize their own games details and view other users favorite games.
 
 ## MVP
@@ -11,4 +11,4 @@ An application that will allow users to create a library of their favorite games
 ## Database
 - User accounts<br />
 - Users Favorite Games<br />
-- Game Genres<br />
+
