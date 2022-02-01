@@ -12,6 +12,39 @@ body {
     color: white;
     background-color: #04080F;
 }
+#homeBtn {
+    color: white;
+    background-color: teal;
+    position: relative;
+    right: 34%;
+    padding: 10px;
+    border-radius: 8px;
+    width: 10%;
+}
+
+#searchBox {
+    background-color: teal;
+    color: white;
+}
+::placeholder {
+    color: #04080F;
+}
+
+#search {
+    color: white;
+    background-color: teal;
+    border-radius: 8px;
+}
+
+#signOut {
+    color: white;
+    background-color: teal;
+    position: relative;
+    left: 34%;
+    padding: 10px;
+    border-radius: 8px;
+    width: 10%;
+}
 
 .flex-container {
     display: flex;
@@ -42,7 +75,7 @@ body {
 }
 
 .game-card {
-    background-color: red;
+    background-color: #96E072;
     width: 400px;
     margin: 20px; 
     display: flex;

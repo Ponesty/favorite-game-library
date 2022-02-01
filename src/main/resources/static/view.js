@@ -74,6 +74,8 @@ const getGames = (id) => {
     });
 }
 
+document.querySelector('#homeBtn').onclick = () => {window.location.href = 'http://localhost:8082/index.html'}
+
 //Taking the players name and refreshing player.html so we can see the new players games.
 document.querySelector('#search').onclick = (e) => {
     e.preventDefault();

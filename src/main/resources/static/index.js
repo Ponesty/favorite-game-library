@@ -101,6 +101,8 @@ document.querySelector('#search').onclick = (e) => {
     window.location.href=`http://localhost:8082/view.html`;
 }
 
+//Home button just reloads page
+document.querySelector('#homeBtn').onclick = () => {window.location.reload();}
 
 //Sign out button. Removing all cookies
 document.querySelector('#signOut').onclick = (e) => {
