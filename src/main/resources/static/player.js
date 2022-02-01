@@ -2,18 +2,14 @@
 
 var uName = document.querySelector('#userName');
 
-const mainPage = () => {
-    window.location.replace(`http://localhost:8082/index.html`);
-    // window.location.assign("http://localhost:8082/index.html");
-}
 
 document.querySelector('#login').onclick = (e) => {
     e.preventDefault();
     axios.get(`http://localhost:8082/player/find/${uName.value}`).then(function (response){
         let player = response.data.userName;
-        document.cookie = `${player}`;
-        mainPage();
-        
+        console.log("this is the player: " + player);
+        document.cookie = `playerMain=`+player;
+        window.location.replace(`http://localhost:8082/index.html`);   
     });
 }
 
@@ -31,8 +27,7 @@ document.querySelector('#signUp').onclick = (e) => {
         "password": newPass.value
     }).then(function (response){
         console.log(response);
-        document.cookie = `${newUName.value}`;
-        mainPage();
+        document.cookie = `playerMain=` +newUName.value;
         window.location.replace(`http://localhost:8082/index.html`);
         
     });

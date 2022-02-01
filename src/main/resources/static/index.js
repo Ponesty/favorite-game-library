@@ -1,12 +1,30 @@
 //const { default: axios } = require("axios");
 
+//Function is getting specific cookie with username from player.html
+function getCookie(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for(let i = 0; i <ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+}
 
-console.log(document.cookie);
 const gameContainer = document.querySelector('#game-container');
 //The Players username in the cookie. Player username is in player2.
-let player2 = document.cookie;
+let player2 = getCookie('playerMain');
 var playerObject;
 let game;
+
+
+
 
 //Function sending a delete game request to server.
 const deleteGame = (id) => {
@@ -23,7 +41,7 @@ function createGameCard(game){
     gameCard.innerHTML =`<h3 class="title">${game.title}</h3>
     <img alt='Game image' src=${game.imageURL} class="game-image"/>
     <p class="game-description">${game.description}</p>
-    <iframe width="420" height="315"
+    <iframe 
     src=${game.videoURL}>
     </iframe>
     <button id= 'deleteBtn' onclick='deleteGame(${game.id})'>Remove Game</button>
@@ -42,21 +60,15 @@ const displayGames = (game) => {
     }
 }
 
-//Finding the logged in player from database so we can use the player id to get their games and saved their created games.
-axios.get(`http://localhost:8082/player/find/${player2}`).then(function (response){
-    playerObject = response.data;
-    console.log(playerObject);
-});
+
 
 //Getting games from the logged in players game list. Currently using the get button.
-document.querySelector('#get').onclick = () => {
-    axios.get(`http://localhost:8082/game/player/${playerObject.id}`).then(function (response){
-        //let show2 =document.createElement('div');
+const getGames = (id) => {
+    axios.get(`http://localhost:8082/game/player/${id}`).then(function (response){
         game = response.data;
         console.log(game);
         displayGames(game);
-        //let arr = Object.values(game);
-        //document.getElementById('test').innerHTML = arr;
+
     });
 
 }
@@ -96,3 +108,12 @@ document.querySelector('#signOut').onclick = (e) => {
     //document.cookie ='expires=Thu, 01 Jan 1970 00:00:00 UTC';
     window.location.replace(`http://localhost:8082/player.html`);
 }
+
+
+//Finding the logged in player from database so we can use the player id to get their games and saved their created games.
+axios.get(`http://localhost:8082/player/find/${player2}`).then(function (response){
+    playerObject = response.data;
+    console.log(playerObject);
+    getGames(playerObject.id);
+});
+
