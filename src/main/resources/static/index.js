@@ -42,7 +42,7 @@ function createGameCard(game){
     <img alt='Game image' src=${game.imageURL} class="game-image"/>
     <p class="game-description">${game.description}</p>
     <iframe 
-    src=${game.videoURL}>
+    src=${game.videoURL} allowfullscreen>
     </iframe>
     <button id= 'deleteBtn' onclick='deleteGame(${game.id})'>Remove Game</button>
     `
